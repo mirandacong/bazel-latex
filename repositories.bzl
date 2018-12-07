@@ -5441,7 +5441,10 @@ exports_files(
 )
 """,
             sha256 = sha256,
-            url = "https://github.com/ProdriveTechnologies/texlive-modular/releases/download/%s/texlive-%s-%s.tar.xz" % (_TEXLIVE_VERSION, _TEXLIVE_VERSION, path.replace("/", "--")),
+            urls = [
+                "http://mirrors.corp.logiocean.com/file-store/texlive/modules/%s/texlive-%s-%s.tar.xz" % (_TEXLIVE_VERSION, _TEXLIVE_VERSION, path.replace("/", "--")),
+                "https://github.com/ProdriveTechnologies/texlive-modular/releases/download/%s/texlive-%s-%s.tar.xz" % (_TEXLIVE_VERSION, _TEXLIVE_VERSION, path.replace("/", "--")),
+            ]
         )
 
     for path, sha256, patches in _TEXLIVE_MODULAR_PACKAGES_OTHER:
@@ -5457,23 +5460,27 @@ filegroup(
 """ % name,
             patches = patches,
             sha256 = sha256,
-            url = "https://github.com/ProdriveTechnologies/texlive-modular/releases/download/%s/texlive-%s-%s.tar.xz" % (_TEXLIVE_VERSION, _TEXLIVE_VERSION, path.replace("/", "--")),
+            urls = [
+                "http://mirrors.corp.logiocean.com/file-store/texlive/modules/%s/texlive-%s-%s.tar.xz" % (_TEXLIVE_VERSION, _TEXLIVE_VERSION, path.replace("/", "--")),
+                "https://github.com/ProdriveTechnologies/texlive-modular/releases/download/%s/texlive-%s-%s.tar.xz" % (_TEXLIVE_VERSION, _TEXLIVE_VERSION, path.replace("/", "--")),
+            ],
         )
 
-    http_archive(
-        name = "bazel_latex_latexrun",
-        build_file_content = "exports_files([\"latexrun\"])",
-        patches = [
-            "@bazel_latex//:patches/latexrun-force-colors",
-            "@bazel_latex//:patches/latexrun-pull-21",
-            "@bazel_latex//:patches/latexrun-pull-47",
-            "@bazel_latex//:patches/latexrun-pull-61",
-            "@bazel_latex//:patches/latexrun-pull-62",
-        ],
-        sha256 = "4e1512fde5a05d1249fd6b4e6610cdab8e14ddba82a7cbb58dc7d5c0ba468c2a",
-        strip_prefix = "latexrun-38ff6ec2815654513c91f64bdf2a5760c85da26e",
-        url = "https://github.com/aclements/latexrun/archive/38ff6ec2815654513c91f64bdf2a5760c85da26e.tar.gz",
-    )
+    # zhongming: Extracted to @logi's WORKSPACE.
+    #http_archive(
+        #name = "bazel_latex_latexrun",
+        #build_file_content = "exports_files([\"latexrun\"])",
+        #patches = [
+            #"@bazel_latex//:patches/latexrun-force-colors",
+            #"@bazel_latex//:patches/latexrun-pull-21",
+            #"@bazel_latex//:patches/latexrun-pull-47",
+            #"@bazel_latex//:patches/latexrun-pull-61",
+            #"@bazel_latex//:patches/latexrun-pull-62",
+        #],
+        #sha256 = "4e1512fde5a05d1249fd6b4e6610cdab8e14ddba82a7cbb58dc7d5c0ba468c2a",
+        #strip_prefix = "latexrun-38ff6ec2815654513c91f64bdf2a5760c85da26e",
+        #url = "https://github.com/aclements/latexrun/archive/38ff6ec2815654513c91f64bdf2a5760c85da26e.tar.gz",
+    #)
 
     native.register_toolchains(
         "@bazel_latex//:latex_toolchain_amd64-freebsd",
