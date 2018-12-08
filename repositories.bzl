@@ -5440,7 +5440,7 @@ exports_files(
     visibility = ["//visibility:public"],
 )
 """,
-            sha256 = sha256,
+            #sha256 = sha256,
             urls = [
                 "http://mirrors.corp.logiocean.com/file-store/texlive/modules/%s/texlive-%s-%s.tar.xz" % (_TEXLIVE_VERSION, _TEXLIVE_VERSION, path.replace("/", "--")),
                 "https://github.com/ProdriveTechnologies/texlive-modular/releases/download/%s/texlive-%s-%s.tar.xz" % (_TEXLIVE_VERSION, _TEXLIVE_VERSION, path.replace("/", "--")),
@@ -5459,7 +5459,7 @@ filegroup(
 )
 """ % name,
             patches = patches,
-            sha256 = sha256,
+            #sha256 = sha256,
             urls = [
                 "http://mirrors.corp.logiocean.com/file-store/texlive/modules/%s/texlive-%s-%s.tar.xz" % (_TEXLIVE_VERSION, _TEXLIVE_VERSION, path.replace("/", "--")),
                 "https://github.com/ProdriveTechnologies/texlive-modular/releases/download/%s/texlive-%s-%s.tar.xz" % (_TEXLIVE_VERSION, _TEXLIVE_VERSION, path.replace("/", "--")),
