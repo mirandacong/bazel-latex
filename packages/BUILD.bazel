@@ -121,6 +121,14 @@ latex_package(
 )
 
 latex_package(
+    name = "csquotes",
+    srcs = [
+        ":etoolbox",
+        "@texlive_texmf__texmf-dist__tex__latex__csquotes",
+    ],
+)
+
+latex_package(
     name = "datenumber",
     srcs = ["@texlive_texmf__texmf-dist__tex__latex__datenumber"],
 )
@@ -204,6 +212,11 @@ latex_package(
 )
 
 latex_package(
+    name = "fancyvrb",
+    srcs = ["@texlive_texmf__texmf-dist__tex__latex__fancyvrb"],
+)
+
+latex_package(
     name = "float",
     srcs = ["@texlive_texmf__texmf-dist__tex__latex__float"],
 )
@@ -245,6 +258,19 @@ latex_package(
 latex_package(
     name = "fullpage",
     srcs = [":preprint"],
+)
+
+latex_package(
+    name = "fvextra",
+    srcs = [
+        ":fancyvrb",
+        ":float",
+        ":framed",
+        ":ifplatform",
+        ":lineno",
+        ":xstring",
+        "@texlive_texmf__texmf-dist__tex__latex__fvextra",
+    ],
 )
 
 latex_package(
@@ -307,6 +333,11 @@ latex_package(
 latex_package(
     name = "ifpdf",
     srcs = [":graphics_oberdiek"],
+)
+
+latex_package(
+    name = "ifplatform",
+    srcs = ["@texlive_texmf__texmf-dist__tex__latex__ifplatform"],
 )
 
 latex_package(name = "ifthen")
@@ -403,6 +434,15 @@ latex_package(
     srcs = [
         ":keyval",
         "@texlive_texmf__texmf-dist__tex__latex__microtype",
+    ],
+)
+
+latex_package(
+    name = "minted",
+    srcs = [
+        ":fvextra",
+        ":upquote",
+        "@texlive_texmf__texmf-dist__tex__latex__minted",
     ],
 )
 
